@@ -6,8 +6,8 @@ import { Link, withRouter } from "react-router-dom"
 class Navbar extends React.Component {
 
   rightNavItems = () => {
-    const { auth: { user, handleLogout },
-      location,
+    const { auth: { user, handleLogout }, //we get this from our consumer in AuthProvider.js
+      location, //we can get location from react router because of withRouter
     } = this.props
     if(user) {
       return (
@@ -19,6 +19,7 @@ class Navbar extends React.Component {
         </Menu.Menu>
       )
     } else {
+      return(
       <Menu.Menu position="right">
         <Link to='/login'>
           <Menu.Item
@@ -35,7 +36,8 @@ class Navbar extends React.Component {
             active={location.pathname === '/register'}
           />
         </Link>
-      </Menu.Menu>
+        </Menu.Menu>
+      )
     }
   }
 
@@ -57,3 +59,15 @@ class Navbar extends React.Component {
     )
   }
 }
+
+class ConnectedNavbar extends React.Component{
+  render() {
+    return (
+      <AuthConsumer>
+        {auth => <Navbar {...this.props} auth={auth}/>}
+      </AuthConsumer>
+    )
+  }
+}
+
+export default withRouter(ConnectedNavbar) //withRouter function comes with react router dom. so we can have props history, location, etc..
