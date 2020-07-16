@@ -12,7 +12,7 @@ export default class AuthProvider extends React.Component{
   state = { user: null }
 
   handleRegister = (user, history) => {
-    
+    console.log("Handle register called")
   }
 
   handleLogin = (user, history) => {

@@ -1,11 +1,14 @@
 import React from "react"
 import { Button, Form, Segment, Header } from "semantic-ui-react"
+import { AuthConsumer } from "../providers/AuthProvider"
 
-export default class Register extends React.Component{
+ class Register extends React.Component{
   state = { email: '', password: '', passwordConfirmation: '' }
   
   handleSubmit = (e) => {
     console.log("submit called")
+    const {auth:{handleRegister}} = this.props //we grab the value off of auth, allows us to use handleRegister
+    handleRegister()
   }
 
   handleChange = (e) => {
@@ -52,6 +55,17 @@ export default class Register extends React.Component{
           </Segment>
         </Form>
       </Segment>
+    )
+  }
+}
+
+export default class ConnectedRegister extends React.Component{
+  render() {
+    return (
+      <AuthConsumer>
+      {/* val gives us access to the authprovider, then we pass it as a props to the register form */}
+        {val => <Register auth={val}/>} 
+      </AuthConsumer>
     )
   }
 }
