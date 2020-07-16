@@ -53,7 +53,7 @@ class Navbar extends React.Component {
               active={this.props.location.path === '/'}
             />
           </Link>
-          
+          {this.rightNavItems()}
         </Menu>
       </div>
     )
