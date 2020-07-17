@@ -8,7 +8,7 @@ import { AuthConsumer } from "../providers/AuthProvider"
   handleSubmit = (e) => {
     console.log("submit called")
     const {auth:{handleRegister}} = this.props //we grab the value off of auth, allows us to use handleRegister
-    handleRegister()
+    handleRegister({...this.state},null) // we spread over the state and get email, password, and confirmation and send it to authprovider.js
   }
 
   handleChange = (e) => {
