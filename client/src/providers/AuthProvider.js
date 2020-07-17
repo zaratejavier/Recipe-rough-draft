@@ -17,7 +17,11 @@ export default class AuthProvider extends React.Component{
     // user email, password, password, confirm_succes_url
     axios.post('/api/auth', user)
       .then(res => {
-        this.setState({user: res.data.data}) // we grab the data and set it to the state
+        this.setState({ user: res.data.data }) // we grab the data and set it to the state
+
+        //we get history(react router dom) from Register.js so we can push to the home component
+        history.push("/")
+
       }).catch((err) => {
         console.log(err)
 
