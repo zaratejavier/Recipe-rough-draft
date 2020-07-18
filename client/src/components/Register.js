@@ -66,9 +66,9 @@ import { AuthConsumer } from "../providers/AuthProvider"
 export default class ConnectedRegister extends React.Component{
   render() {
     return (
-      <AuthConsumer>
+      <AuthConsumer> 
       {/* val gives us access to the authprovider, then we pass it as a props to the register form.
-      We also have to sperad over props(from connectedRegister) so that we have acces to react router dom history*/}
+      We also have to spre ad over props(from connectedRegister) so that we have acces to react router dom history*/}
         {val => <Register {...this.props} auth={val}/>} 
       </AuthConsumer>
     )
