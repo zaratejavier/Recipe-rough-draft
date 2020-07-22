@@ -14,7 +14,7 @@ class Navbar extends React.Component {
         <Menu.Menu position="right">
           <Menu.Item
             name='logout'
-            onClick={() => handleLogout(this.props.history)}
+            onClick={() => handleLogout(this.props.history)} // we send this.props.history to the handleLogout function in our authprovider
           />
         </Menu.Menu>
       )

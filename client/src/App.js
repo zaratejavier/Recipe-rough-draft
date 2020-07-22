@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar"
 import Home from "./components/Home"
 import Register from "./components/Register"
 import Login from "./components/Login"
+import FetchUser from "./components/FetchUser"
 
 
 
@@ -14,12 +15,14 @@ function App() {
   return (
     <>
       <Navbar />
-      <Container>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/register' component={Register}/>
-        <Route exact path='/login' component={Login}/>
-        
-      </Container>
+      {/* what below fetchUser is the children that we are talking about in FetchUser line 18 */}
+      <FetchUser>
+        <Container>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/register' component={Register}/>
+          <Route exact path='/login' component={Login}/>
+        </Container>
+      </FetchUser>
     </>
   );
 }

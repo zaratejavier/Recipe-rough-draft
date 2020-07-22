@@ -6,6 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import AuthProvider from "./providers/AuthProvider"
 import { BrowserRouter, } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
+import { initMiddleware, } from 'devise-axios';
+
+initMiddleware();
 
 ReactDOM.render(
   <AuthProvider>

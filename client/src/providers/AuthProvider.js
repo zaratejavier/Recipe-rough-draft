@@ -34,12 +34,18 @@ export default class AuthProvider extends React.Component{
         this.setState({ user: res.data.data }) //we get the data the user input and add it to the state
         history.push("/") //we send the user to the homepage after they login
       }).catch((err) => {
-      console.log(err)
+        console.log(err)
+        alert("Invalid Login attempt")
     })
   }
 
-  handleLogout = (history) => {
-
+  handleLogout = (history) => { //we get history here form navbar
+    axios.delete('/api/auth/sign_out')
+      .then(res => {
+        console.log(res);
+        this.setState({ user: null }); //whatever user was there we just default it back null
+        history.push('/login'); //after the user has been logged out it will take them back to the login page
+    })
   }
 
   render() {
