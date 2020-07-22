@@ -6,7 +6,7 @@ class Login extends React.Component {
   state = { email: '', password: '' };
 
   handleSubmit = (e) => {
-    this.props.auth.handleLogin({...this.state}, this.props.history)
+    this.props.auth.handleLogin({...this.state}, this.props.history) //we grab the state and send it to the authprovider with history
   }
 
   handleChange = (e) => {

@@ -10,7 +10,7 @@ import { AuthConsumer } from "../providers/AuthProvider"
     //the register component has history object on it
     const { auth: { handleRegister }, history } = this.props
 
-    if (this.state.password != this.state.passwordConfirmation) {
+    if (this.state.password !== this.state.passwordConfirmation) {
       alert("Passwords do not match")
       return;
     }

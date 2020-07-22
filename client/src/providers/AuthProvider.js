@@ -26,12 +26,16 @@ export default class AuthProvider extends React.Component{
         console.log(err)
 
       })
-
-    //then i want to redirect/go or go to home page on succesful register
   }
 
-  handleLogin = (user, history) => {
-    
+  handleLogin = (user, history) => { // we get the user and history from the Register function
+    axios.post("api/auth/sign_in", user)
+      .then((res) => {
+        this.setState({ user: res.data.data }) //we get the data the user input and add it to the state
+        history.push("/") //we send the user to the homepage after they login
+      }).catch((err) => {
+      console.log(err)
+    })
   }
 
   handleLogout = (history) => {
