@@ -35,6 +35,7 @@ import { AuthConsumer } from "../providers/AuthProvider"
           <Form.Input
             label="Email"
             required
+            type="email"
             autoFocus
             name='email'
             value={email}
@@ -47,12 +48,14 @@ import { AuthConsumer } from "../providers/AuthProvider"
             name='password'
             value={password}
             placeholder='Password'
+            minLength={8}
             type='password'
             onChange={this.handleChange}
           />
           <Form.Input
             label="Password Confirmation"
             required
+            minLength={8}
             name='passwordConfirmation'
             value={passwordConfirmation}
             placeholder='Password Confirmation'
