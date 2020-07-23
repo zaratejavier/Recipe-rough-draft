@@ -45,6 +45,8 @@ export default class AuthProvider extends React.Component{
         console.log(res);
         this.setState({ user: null }); //whatever user was there we just default it back null
         history.push('/login'); //after the user has been logged out it will take them back to the login page
+      }).catch((err) => {
+      alert("Logout Failed")
     })
   }
 
