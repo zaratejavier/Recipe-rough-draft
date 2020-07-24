@@ -10,7 +10,7 @@ export default function FetchUser (props) {
     if (!authenticated) { //if we are not authenicated check for token
       checkLocalToken();
     }
-    setLoaded(true) // else set loaded to true
+    setLoaded(true) //set loaded to true
 
   },[]) //we use [] so it only runs once when its is mounted
 
