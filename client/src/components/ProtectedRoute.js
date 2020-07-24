@@ -10,12 +10,13 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render = {(props) =>
       authenticated ? (
-        <Component {...props} />
+        <Component {...props} /> //if we are authenticated we will see our pages
         ) :(
-          <Redirect to={{ pathname: '/login' }}/>
+          <Redirect to={{ pathname: '/login' }}/> // else it will take us to the login component
         )
       }
       />
-    )
+  )
+  
 }
 export default ProtectedRoute

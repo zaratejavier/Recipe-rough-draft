@@ -20,8 +20,8 @@ function App() {
       {/* what below fetchUser is the children that we are talking about in FetchUser line 18 */}
       <FetchUser>
         <Container>
-          {/* <ProtectedRoute exact path='/' component={Home} /> */}
-          <Route exact path='/' component={Home} />
+          <ProtectedRoute exact path='/' component={Home} />
+          {/* <Route exact path='/' component={Home} /> */}
 
           <Route exact path='/register' component={Register}/>
           <Route exact path='/login' component={Login}/>
