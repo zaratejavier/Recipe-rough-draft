@@ -7,7 +7,7 @@ export default function FetchUser (props) {
   const { authenticated, setUser } = useContext(AuthContext)
 
   useEffect(() => {
-    if (authenticated) { //if we are not authenicated check for token
+    if (authenticated) { //if we are authenicated check for token
       setLoaded(true) //set loaded to true
     }
     checkLocalToken();
