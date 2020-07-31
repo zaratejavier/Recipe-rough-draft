@@ -1,5 +1,5 @@
 class Api::RecipesController < ApplicationController
   def index
-    Recipe.all
+    render json: Recipe.all
   end
 end
