@@ -7,10 +7,10 @@ export default function FetchUser (props) {
   const { authenticated, setUser } = useContext(AuthContext)
 
   useEffect(() => {
-    if (!authenticated) { //if we are not authenicated check for token
-      checkLocalToken();
+    if (authenticated) { //if we are not authenicated check for token
+      setLoaded(true) //set loaded to true
     }
-    setLoaded(true) //set loaded to true
+    checkLocalToken();
 
   },[]) //we use [] so it only runs once when its is mounted
 
@@ -23,6 +23,7 @@ export default function FetchUser (props) {
         console.log(e)
       }
     }
+    setLoaded(true);
   }
 
   return loaded ? props.children : null; //props.children i just the nested stuff in app.js inside of Fetch user

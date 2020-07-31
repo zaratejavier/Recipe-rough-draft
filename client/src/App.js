@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Container } from "semantic-ui-react"
 import { Switch, Route } from "react-router-dom"
