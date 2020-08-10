@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import Recipe from "./Recipe"
 
 const Home = () => {
   const [recipes, setRecipes] = useState([])
@@ -21,13 +22,15 @@ const Home = () => {
 
   const renderRecipes = () => {
     return recipes.map(recipe => (
-      <h1>Title: {recipe.title}</h1>
+      <Recipe
+        key={recipe.id}
+        {...recipe}
+      />
     ))
  }
  
   return(
   <div>
-      <h1>devise auth app</h1>
       {renderRecipes()}
   </div>
   )
