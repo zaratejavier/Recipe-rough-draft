@@ -5,19 +5,19 @@ import { AuthConsumer } from "../providers/AuthProvider"
  class Register extends React.Component{
   state = { email: '', password: '', passwordConfirmation: '', name:'' }
   
-  handleSubmit = (e) => {
+   handleSubmit = (e) => {
+     e.preventDefault()
+     
+     const {email, password, passwordConfirmation, name} = this.state
     //we grab the value off of auth, allows us to use handleRegister
     //the register component has history object on it
     const { auth: { handleRegister }, history } = this.props
 
-    if (this.state.password !== this.state.passwordConfirmation) {
-      alert("Passwords do not match")
-      return;
-    }
-    
+     if (password === passwordConfirmation)
     // we spread over the state and get email, password, and confirmation and send it to authprovider.js
     // we now pass the history(which is the react router history object) to the handRegister in authprovider.
-    handleRegister({...this.state},history) 
+    handleRegister({email, password, passwordConfirmation, name},history) 
+      else alert("Passwords do not match")
   }
 
   handleChange = (e) => {
