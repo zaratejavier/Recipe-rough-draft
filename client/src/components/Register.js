@@ -3,7 +3,7 @@ import { Button, Form, Segment, Header } from "semantic-ui-react"
 import { AuthConsumer } from "../providers/AuthProvider"
 
  class Register extends React.Component{
-  state = { email: '', password: '', passwordConfirmation: '' }
+  state = { email: '', password: '', passwordConfirmation: '', name:'' }
   
   handleSubmit = (e) => {
     //we grab the value off of auth, allows us to use handleRegister
@@ -26,17 +26,25 @@ import { AuthConsumer } from "../providers/AuthProvider"
   }
   
   render() {
-     const { email, password, passwordConfirmation, } = this.state;
+     const { email, password, passwordConfirmation,name } = this.state;
     
     return (
       <Segment basic>
         <Header as='h1' textAlign='center'>Register</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
+            label="Name"
+            autoFocus
+            required
+            name="name"
+            value={name}
+            placeholder="Name"
+            onChange={this.handleChange}
+          />
+          <Form.Input
             label="Email"
             required
             type="email"
-            autoFocus
             name='email'
             value={email}
             placeholder='Email'
