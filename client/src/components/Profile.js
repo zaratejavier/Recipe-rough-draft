@@ -1,11 +1,12 @@
 import React from "react"
 import { AuthConsumer } from "../providers/AuthProvider"
 import { Container, Divider, Grid, Image, Header, GridRow, GridColumn, Button, Form } from "semantic-ui-react"
+import Dropzone from "react-dropzone"
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 class Profile extends React.Component {
-  state = {editing: false, formValues: {name: "", email:""}}
+  state = {editing: false, formValues: {name: "", email: "", file: ""}}
 
   componentDidMount() {
     const { auth: { user: { name, email } } } = this.props
@@ -13,7 +14,14 @@ class Profile extends React.Component {
   }
 
   handleChange = (e) => {
-    
+    const { name, value } = e.target
+    this.setState({
+      formValues:
+      {
+        ...this.state.formValues,
+        [name]: value
+      }
+    })
   }
 
   handleSubmit = (e) => [
@@ -43,6 +51,26 @@ class Profile extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Grid.Column width={4}>
+        <Dropzone
+          onDrop={this.onDrop}
+          multiple={false}
+        >
+          {({ getRootProps, getInputProps, isDragActive }) => {
+            return (
+              <div
+                {...getRootProps()}
+                style={styles.dropzone}
+              >
+                <input {...getInputProps()} />
+                {
+                  isDragActive ?
+                    <p>Drop files here...</p> :
+                    <p>Try dropping some files here, or click to select files to upload.</p>
+                }
+              </div>
+            )
+          }}
+        </Dropzone>
         </Grid.Column>
         <Grid.Column width={8}>
           <Form.Input
