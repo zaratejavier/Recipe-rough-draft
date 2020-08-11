@@ -6,11 +6,11 @@ import Dropzone from "react-dropzone"
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 class Profile extends React.Component {
-  state = {editing: false, formValues: {name: "", email: "", file: ""}}
+  state = { editing: false, formValues: { name: "", email: "", file: "" } }
 
   componentDidMount() {
     const { auth: { user: { name, email } } } = this.props
-    this.setState({formValues: {name, email}})
+    this.setState({ formValues: { name, email } })
   }
 
   handleChange = (e) => {
@@ -24,17 +24,30 @@ class Profile extends React.Component {
     })
   }
 
-  handleSubmit = (e) => [
-
-  ]
+  handleSubmit = (e) => {
+    const {
+      formValues: { name, email, file },
+    } = this.state
+    const {
+      auth: { user, updateUser },
+    } = this.props
+    updateUser(user.id, { name, email, file });
+    this.setState({
+      editing: false,
+      formValues: {
+        ...this.formValues,
+        file: "",
+      }
+    })
+  }
   
   profileView = () => {
     const { auth: { user }, } = this.props
     return (
       <>
         <Grid.Column width={4}>
-          <Image src={user.image || defaultImage}/>
-        </Grid.Column>  
+          <Image src={user.image || defaultImage} />
+        </Grid.Column>
         <Grid.Column width={8}>
           <Header as='h1'>Name: {user.name}</Header>
           <Header as='h1'>Email: {user.email}</Header>
@@ -42,6 +55,10 @@ class Profile extends React.Component {
         </Grid.Column>
       </>
     )
+  }
+
+  onDrop = (files) => {
+    this.setState({ formValues: { ...this.formValues, file: files[0] } });
   }
 
 
@@ -121,4 +138,17 @@ const ConnectedProfile = (props) => (
   <AuthConsumer>{(auth) => <Profile {...props} auth={auth}/>}</AuthConsumer>
 )
 
+const styles = {
+  dropzone: {
+    height: "150px",
+    width: "150px",
+    border: "1px dashed black",
+    borderRadius: "5px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+  },
+}
+    
 export default ConnectedProfile

@@ -50,6 +50,12 @@ export default class AuthProvider extends React.Component{
     })
   }
 
+  updateUser = (id, userObj) => {
+    console.log("id", id)
+    console.log("userObj", userObj)
+
+  }
+
   render() {
     return (
       <AuthContext.Provider value={{ 
@@ -58,7 +64,8 @@ export default class AuthProvider extends React.Component{
         handleLogin: this.handleLogin,
         handleRegister: this.handleRegister,
         handleLogout: this.handleLogout,
-        setUser: (user) => this.setState({user}) 
+        setUser: (user) => this.setState({ user }),
+        updateUser: this.updateUser,
       }}
       >
         {this.props.children}
