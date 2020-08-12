@@ -49,7 +49,7 @@ export default class AuthProvider extends React.Component{
       alert("Logout Failed")
     })
   }
-  
+
 updateUser = (id, userObj) => {
     let data = new FormData();
     data.append("file", userObj.file);
