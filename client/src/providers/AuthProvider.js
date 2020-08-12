@@ -50,11 +50,18 @@ export default class AuthProvider extends React.Component{
     })
   }
 
-  updateUser = (id, userObj) => {
-    let data = new FormData()
-    data.append('file', userObj.file)
-    data.append('x', userObj.email);
-    axios.put(`/api/users/${id}?email=${userObj.email}&name=${userObj.name}`, data);
+  // updateUser = (id, userObj) => {
+  //   let data = new FormData()
+  //   data.append('file', userObj.file)
+  //   data.append('x', userObj.email);
+  //   axios.put(`/api/users/${id}?email=${userObj.email}&name=${userObj.name}`, data);
+  // }
+
+   updateUser = (id, user) => {
+    let data = new FormData();
+    data.append('file', user.file);
+    axios.put(`/api/users/${id}?name=${user.name}&email=${user.email}`, data)
+      .then( res => this.setState({ user: res.data, }) )
   }
 
   render() {
