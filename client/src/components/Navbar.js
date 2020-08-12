@@ -35,7 +35,7 @@ class Navbar extends React.Component {
             name='register'
             active={location.pathname === '/register'}
           />
-        </Link>
+          </Link>
         </Menu.Menu>
       )
     }
@@ -53,6 +53,13 @@ class Navbar extends React.Component {
               active={this.props.location.path === '/'}
             />
           </Link>
+          <Link to='/recipeApi'>
+            <Menu.Item
+            id='recipeAPI'
+            name='Discover'
+            active={this.props.location.path === '/recipeApi'}
+            />  
+          </Link>
            <Link to='/profile'>
             <Menu.Item
               name='profile'
@@ -60,6 +67,8 @@ class Navbar extends React.Component {
               active={this.props.location.path === '/profile'}
             />
           </Link>
+          
+          
           {this.rightNavItems()}
         </Menu>
       </div>
