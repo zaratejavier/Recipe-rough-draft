@@ -10,7 +10,7 @@ import FetchUser from "./components/FetchUser"
 import ProtectedRoute from "./components/ProtectedRoute"
 import profile from './components/Profile';
 import RecipeView from './components/RecipeView';
-import RecipeApi from './components/RecipeApi'
+import RecipesApi from './components/RecipesApi'
 
 
 
@@ -25,7 +25,7 @@ function App() {
           <ProtectedRoute exact path='/' component={Home} />
           <ProtectedRoute exact path='/api/recipe/:id' component={RecipeView} />
           <ProtectedRoute exact path='/profile' component={profile} />
-          <ProtectedRoute exact path='/RecipeApi' component={RecipeApi} />
+          <ProtectedRoute exact path='/RecipesApi' component={RecipesApi} />
 
 
           {/* <Route exact path='/' component={Home} /> */}
