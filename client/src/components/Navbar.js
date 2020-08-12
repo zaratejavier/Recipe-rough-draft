@@ -12,6 +12,13 @@ class Navbar extends React.Component {
     if(user) {
       return (
         <Menu.Menu position="right">
+          <Link to='/profile'>
+            <Menu.Item
+              name='profile'
+              id='profile'
+              active={this.props.location.path === '/profile'}
+            />
+          </Link>
           <Menu.Item
             name='logout'
             onClick={() => handleLogout(this.props.history)} // we send this.props.history to the handleLogout function in our authprovider
@@ -60,15 +67,6 @@ class Navbar extends React.Component {
             active={this.props.location.path === '/recipesApi'}
             />  
           </Link>
-           <Link to='/profile'>
-            <Menu.Item
-              name='profile'
-              id='profile'
-              active={this.props.location.path === '/profile'}
-            />
-          </Link>
-          
-          
           {this.rightNavItems()}
         </Menu>
       </div>

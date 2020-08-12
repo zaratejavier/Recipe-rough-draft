@@ -16,6 +16,13 @@ const Recipe = (props) => {
         >
         View
         </Button>
+        <Button
+          // size="sm"
+          // variant="outline-danger"
+          // onClick={() => props.deleteBook(props.id)}
+        >
+         Delete
+        </Button>
       
       
     </div>

@@ -23,7 +23,7 @@ function App() {
       <FetchUser>
         <Container>
           <ProtectedRoute exact path='/' component={Home} />
-          <ProtectedRoute exact path='/api/recipe/:id' component={RecipeView} />
+          <ProtectedRoute exact path='/recipe/:id' component={RecipeView} />
           <ProtectedRoute exact path='/profile' component={profile} />
           <ProtectedRoute exact path='/RecipesApi' component={RecipesApi} />
 
