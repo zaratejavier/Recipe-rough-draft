@@ -27,10 +27,17 @@ const Home = () => {
         {...recipe}
       />
     ))
- }
+  }
+  
+  // addRecipe function
+
+  // editRecipe Function
+
+  // deleteRecipe function
  
   return(
-  <div>
+    <div>
+      <h1>Welcome to InstaCook</h1>
       {renderRecipes()}
   </div>
   )

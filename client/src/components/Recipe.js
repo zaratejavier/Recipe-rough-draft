@@ -12,7 +12,7 @@ const Recipe = (props) => {
       <p> Prep Time: {props.prep_time}</p>
        <Button
           as={Link}
-          to={{pathname: `/Character/${props.id}`}}
+          to={{pathname: `/recipe/${props.id}`}}
         >
         View
         </Button>
