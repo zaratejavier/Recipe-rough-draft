@@ -49,35 +49,37 @@ export default class AuthProvider extends React.Component{
       alert("Logout Failed")
     })
   }
-
-  // updateUser = (id, userObj) => {
-  //   let data = new FormData()
-  //   data.append('file', userObj.file)
-  //   data.append('x', userObj.email);
-  //   axios.put(`/api/users/${id}?email=${userObj.email}&name=${userObj.name}`, data);
-  // }
-
-   updateUser = (id, user) => {
+  
+updateUser = (id, userObj) => {
     let data = new FormData();
-    data.append('file', user.file);
-    axios.put(`/api/users/${id}?name=${user.name}&email=${user.email}`, data)
-      .then( res => this.setState({ user: res.data, }) )
-  }
+    data.append("file", userObj.file);
+    console.log("file", userObj.file);
+    axios
+      .put(`/api/users/${id}?email=${userObj.email}&name=${userObj.name}`, data)
+      .then((res) => {
+        console.log("res", res);
+        this.setState({ user: res.data });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   render() {
     return (
-      <AuthContext.Provider value={{ 
-        ...this.state, //we are spreading over the state
-        authenticated: this.state.user !== null, //authenticated is just a boolean
-        handleLogin: this.handleLogin,
-        handleRegister: this.handleRegister,
-        handleLogout: this.handleLogout,
-        setUser: (user) => this.setState({ user }),
-        updateUser: this.updateUser,
-      }}
+      <AuthContext.Provider
+        value={{
+          ...this.state,
+          authenticated: this.state.user !== null,
+          handleRegister: this.handleRegister,
+          handleLogin: this.handleLogin,
+          handleLogout: this.handleLogout,
+          setUser: (user) => this.setState({ user }),
+          updateUser: this.updateUser,
+        }}
       >
         {this.props.children}
       </AuthContext.Provider>
-    )
+    );
   }
 }
