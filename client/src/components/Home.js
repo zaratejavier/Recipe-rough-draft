@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import RecipeForm from "./RecipeForm"
 import Recipe from "./Recipe"
 
 const Home = () => {
@@ -38,7 +39,9 @@ const Home = () => {
   return(
     <div>
       <h1>Welcome to InstaCook</h1>
+      <RecipeForm/>
       {renderRecipes()}
+
   </div>
   )
 }

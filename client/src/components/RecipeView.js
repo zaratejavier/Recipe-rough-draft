@@ -9,14 +9,16 @@ const RecipeView = (props) => {
       .then((res) => {
         setRecipe(res.data)
         console.log(res.data)
-        debugger
+        // debugger
     })
   },[])
   return (
+    <div>
     <h1>{recipe.title}</h1>
+    <p>{recipe.ingridients}</p>
+    <p>{recipe.directions}</p>
+    </div>
   )
 }
 
 export default RecipeView
-
-// /api/recipes/:id
