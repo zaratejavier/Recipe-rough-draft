@@ -17,9 +17,7 @@ const RecipeForm = (props) => {
     e.preventDefault()
     Axios.post('/api/recipes', { title, ingridients, directions, prepTime, cookTime, }) //we tell it what information is going to be added to the database
       .then(res => {
-        
         props.addRecipe(res.data)
-        debugger
     })
   }
 
@@ -81,8 +79,9 @@ const RecipeForm = (props) => {
           onChange={(e) => setingridients(e.target.value)}
         /> */}
         <Modal.Actions>
-          <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button >Submit</Button>
+          <Button>Submit</Button>
+          <Button onClick={() => setOpen(false)}>Exit</Button>
+            
         </Modal.Actions>
       </Form>
     </Modal>

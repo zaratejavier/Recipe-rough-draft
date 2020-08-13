@@ -34,7 +34,6 @@ const Home = () => {
   // we send it to our state through our setRecipes, 
   // we put it at the begining of the array and then spread the rest of our books after that
   const addRecipe = (recipe) => setRecipes([recipe, ...recipes]) 
-  debugger
 
   // editRecipe Function
 

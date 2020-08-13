@@ -10,7 +10,7 @@ class Api::RecipesController < ApplicationController
 
   def create
     recipe = current_user.recipes.new(recipe_params)
-    binding.pry
+    # binding.pry
     if recipe.save
       render json: recipe
     else
