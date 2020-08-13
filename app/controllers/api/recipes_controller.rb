@@ -9,7 +9,7 @@ class Api::RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
+    recipe = current_user.recipes.new(recipe_params)
     binding.pry
     if recipe.save
       render json: recipe
@@ -25,7 +25,7 @@ class Api::RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :ingridients, :directions, :prep_time, :cook_time, :user_id)
+    params.require(:recipe).permit(:title, :ingridients, :directions, :prep_time, :cook_time)
   end
 end
 
