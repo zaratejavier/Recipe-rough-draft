@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Form, FormInput } from "semantic-ui-react"
+import { Form, FormInput, Modal, Button } from "semantic-ui-react"
 
 const RecipeForm = () => {
   const [title, setTitle] = useState('')
@@ -7,11 +7,19 @@ const RecipeForm = () => {
   const [directions, setDirections] = useState('')
   const [prepTime, setPrepTime] = useState('')
   const [cookTime, setCookTime] = useState('')
+  const [open, setOpen] = React.useState(false)
+  
   // const [image, setImage] = useState('')
 
 
   return (
     <>
+      <Modal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<Button>Add Recipe</Button>}
+    >
       <Form>
         <FormInput
           label="Title:"
@@ -21,7 +29,7 @@ const RecipeForm = () => {
           placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <FormInput
+        <Form.TextArea
           label="Ingridients:"
           name="ingridients"
           required
@@ -29,7 +37,7 @@ const RecipeForm = () => {
           placeholder="Ingridients"
           onChange={(e) => setIngridients(e.target.value)}
         />
-        <FormInput
+        <Form.TextArea
           label="Directions:"
           name="directions"
           required
@@ -61,7 +69,14 @@ const RecipeForm = () => {
           placeholder="Ingridients"
           onChange={(e) => setingridients(e.target.value)}
         /> */}
-    </Form>
+        </Form>
+        <Modal.Actions>
+        <Button onClick={() => setOpen(false)}>Cancel</Button>
+        <Button onClick={() => setOpen(false)} positive>
+          Ok
+        </Button>
+      </Modal.Actions>
+        </Modal>
     </>
   )
 };
