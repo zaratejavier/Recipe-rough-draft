@@ -8,8 +8,24 @@ class Api::RecipesController < ApplicationController
     render json: @recipe
   end
 
+  def create
+    recipe = Recipe.new(recipe_params)
+    binding.pry
+    if recipe.save
+      render json: recipe
+    else
+      render json: recipe.errors, status: 422
+    end
+  end
+
+
   private
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
+
+  def recipe_params
+    params.require(:recipe).permit(:title, :ingridients, :directions, :prep_time, :cook_time, :user_id)
+  end
 end
+

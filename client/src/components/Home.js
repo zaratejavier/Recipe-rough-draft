@@ -30,7 +30,11 @@ const Home = () => {
     ))
   }
   
-  // addRecipe function
+  // we pass the recipe object that we get from our form
+  // we send it to our state through our setRecipes, 
+  // we put it at the begining of the array and then spread the rest of our books after that
+  const addRecipe = (recipe) => setRecipes([recipe, ...recipes]) 
+  debugger
 
   // editRecipe Function
 
@@ -39,7 +43,8 @@ const Home = () => {
   return(
     <div>
       <h1>Welcome to InstaCook</h1>
-      <RecipeForm/>
+      {/* we pass the function addRecipe to our RecipeForm */}
+      <RecipeForm addRecipe={addRecipe} hello={"hey there"}/>
       {renderRecipes()}
 
   </div>
