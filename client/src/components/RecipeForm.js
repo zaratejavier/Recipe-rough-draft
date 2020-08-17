@@ -43,7 +43,7 @@ const RecipeForm = (props) => {
           name="ingridients"
           required
           value={ingridients}
-          placeholder="Ingredients"
+          placeholder="Ingredients (Please comman separate)"
           onChange={(e) => setIngridients(e.target.value)}
         />
         <Form.TextArea
