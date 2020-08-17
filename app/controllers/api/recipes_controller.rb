@@ -18,6 +18,10 @@ class Api::RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe.destroy
+  end
+
 
   private
   def set_recipe

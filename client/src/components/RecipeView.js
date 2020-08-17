@@ -16,7 +16,8 @@ const RecipeView = (props) => {
     <div>
     <h1>{recipe.title}</h1>
     <p>{recipe.ingridients}</p>
-    <p>{recipe.directions}</p>
+      <p>{recipe.directions}</p>
+      <p>prep time{recipe.prep_time}</p>
     </div>
   )
 }

@@ -3,11 +3,11 @@ import { Form, FormInput, Modal, Button } from "semantic-ui-react"
 import Axios from "axios";
 
 const RecipeForm = (props) => {
-  const [title, setTitle] = useState('')
-  const [ingridients, setIngridients] = useState('')
-  const [directions, setDirections] = useState('')
-  const [prepTime, setPrepTime] = useState('')
-  const [cookTime, setCookTime] = useState('')
+  const [title, setTitle] = useState(props.title ? props.title :'')
+  const [ingridients, setIngridients] = useState(props.ingridients ? props.ingridients :'')
+  const [directions, setDirections] = useState(props.directions ? props.directions :'')
+  const [prepTime, setPrepTime] = useState(props.prepTime ? props.prepTime :'')
+  const [cookTime, setCookTime] = useState(props.cookTime ? props.cookTime :'')
   const [open, setOpen] = useState(false)
 
   

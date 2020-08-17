@@ -26,8 +26,14 @@ const Home = () => {
       <Recipe
         key={recipe.id}
         {...recipe}
+        deleteRecipe={deleteRecipe}
       />
     ))
+  }
+
+  const deleteRecipe = (id) => { // we get the id from our function being called in recipe component. the id is the user we are on
+    axios.delete(`/api/recipes/${id}`)
+    setRecipes(recipes.filter(recipe => recipe.id !== id))
   }
   
   // we pass the recipe object that we get from our form
@@ -43,7 +49,7 @@ const Home = () => {
     <div>
       <h1>Welcome to InstaCook</h1>
       {/* we pass the function addRecipe to our RecipeForm */}
-      <RecipeForm addRecipe={addRecipe} hello={"hey there"}/>
+      <RecipeForm addRecipe={addRecipe}/>
       {renderRecipes()}
 
   </div>
