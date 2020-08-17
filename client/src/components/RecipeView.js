@@ -3,9 +3,9 @@ import Axios from "axios"
 
 const RecipeView = (props) => {
   const [recipe, setRecipe] = useState({})
-  const [splitting, setSplitting] = useState([])
+  const [ingrediantSplit, setIngrediantSplit] = useState([])
   
-  console.log(splitting)
+  console.log(ingrediantSplit)
 
   useEffect(() => {
     Axios.get(`/api/recipes/${props.match.params.id}`)
@@ -13,15 +13,15 @@ const RecipeView = (props) => {
         setRecipe(res.data)
         console.log(res.data)
         // console.log(res.data.ingridients.split(','))
-        setSplitting(res.data.ingridients.split('\n').map(e => e.split(',')))
+        setIngrediantSplit(res.data.ingridients.split('\n').map(e => e.split(',')))
     })
   }, [])
 
 
-  const renderIngrediants = () => {
-    return splitting.map(ingridient => (
-      <div key={ingridient.id}>
-        <p>{ingridient}</p>
+  const renderIngredients = () => {
+    return ingrediantSplit.map(ingredient => (
+      <div key={ingredient.id}>
+        <p>{ingredient}</p>
       </div>  
     ))
   }
@@ -33,7 +33,7 @@ const RecipeView = (props) => {
       {/* <p>{splitting.ingridients}</p> */}
     
       
-      {renderIngrediants()}
+      {renderIngredients()}
         <br />
     
       {/* <p>{recipe.ingridients}</p> */}
