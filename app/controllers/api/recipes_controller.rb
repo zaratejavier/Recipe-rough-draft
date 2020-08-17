@@ -10,7 +10,7 @@ class Api::RecipesController < ApplicationController
 
   def create
     recipe = current_user.recipes.new(recipe_params)
-    binding.pry
+    # binding.pry
     if recipe.save
       render json: recipe
     else
@@ -33,3 +33,8 @@ class Api::RecipesController < ApplicationController
   end
 end
 
+# 1 Chicken (4 boneless Breast),\n2 can cream of mushroom,\n1 can cream of chicken,\n3/4 cup slivered almonds(opt),\n3 cups celery,\n1/2 cup onion(chopped),\n1 can Chow Mein Noodles(or rice)\n
+
+# add mushrooms, chestnuts, sprouts, etc. To taste. Cook chicken reserve 2 cups broth. Cut into large chunks. Add remaining ingrediants. (expect noodles). Bake for 1 hour at 325 degrees
+
+# Chicken Chow Mein Casserole
