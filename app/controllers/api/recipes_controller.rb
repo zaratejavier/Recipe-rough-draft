@@ -25,12 +25,10 @@ class Api::RecipesController < ApplicationController
         render json: recipe.errors, status: 422
       end
     end
-  end
 
   def destroy
     @recipe.destroy
   end
-
 
   private
   def set_recipe

@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button } from "semantic-ui-react"
 import { Link } from "react-router-dom"
+import RecipeForm from "./RecipeForm"
 
 const Recipe = (props) => {
-
+  const [editing, setEditing] = useState(false)
 
   return (
     <div>
@@ -17,12 +18,16 @@ const Recipe = (props) => {
         View
         </Button>
         <Button
-          size="sm"
-          variant="outline-danger"
           onClick={() => props.deleteRecipe(props.id)}
         >
-         Delete
+        Delete
         </Button>
+      
+      <Button
+        onClick={() => setEditing(!editing)}>edit
+      </Button>
+        {editing ? <RecipeForm/> : null}
+      
       
       
     </div>

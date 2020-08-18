@@ -27,6 +27,7 @@ const Home = () => {
         key={recipe.id}
         {...recipe}
         deleteRecipe={deleteRecipe}
+        editRecipe={editRecipe}
       />
     ))
   }
@@ -34,6 +35,18 @@ const Home = () => {
   const deleteRecipe = (id) => { // we get the id from our function being called in recipe component. the id is the user we are on
     axios.delete(`/api/recipes/${id}`)
     setRecipes(recipes.filter(recipe => recipe.id !== id))
+  }
+
+  const editRecipe = (id) => {
+    axios.put(`/api/recipes/${id}`)
+      .then(res => {
+        const updateRecipe = recipes.map(recipe => {
+          if (recipe.id === id)
+            return res.data;
+          return recipe
+        })
+        setRecipes(updateRecipe)
+    })
   }
   
   // we pass the recipe object that we get from our form
