@@ -19,6 +19,7 @@ const RecipeForm = (props) => {
     e.preventDefault()
     if (props.editRecipe) {
       props.editRecipe(props.id, recipe)
+      props.toggleEdit()
     }
     else {
       Axios.post('/api/recipes', { title, ingridients, directions, prepTime, cookTime, }) //we tell it what information is going to be added to the database
@@ -31,7 +32,8 @@ const RecipeForm = (props) => {
 
   return (
     <>
-    <Modal
+      <Modal
+      style={{padding: "20px", margin: "30px", display: "flex", justifyContent: "SpaceAround"}}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
