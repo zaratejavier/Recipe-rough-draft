@@ -18,6 +18,15 @@ class Api::RecipesController < ApplicationController
     end
   end
 
+  def update
+      if @recipe.update(recipe_params)
+        render json: @recipe
+      else
+        render json: recipe.errors, status: 422
+      end
+    end
+  end
+
   def destroy
     @recipe.destroy
   end
