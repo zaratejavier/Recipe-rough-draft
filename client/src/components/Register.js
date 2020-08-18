@@ -1,9 +1,9 @@
 import React from "react"
-import { Button, Form, Segment, Header } from "semantic-ui-react"
+import { Button, Form, Segment, Header, Modal } from "semantic-ui-react"
 import { AuthConsumer } from "../providers/AuthProvider"
 
  class Register extends React.Component{
-  state = { email: '', password: '', passwordConfirmation: '', name:'' }
+  state = { email: '', password: '', passwordConfirmation: '', name:'', open: false }
   
    handleSubmit = (e) => {
      e.preventDefault()
@@ -26,9 +26,15 @@ import { AuthConsumer } from "../providers/AuthProvider"
   }
   
   render() {
-     const { email, password, passwordConfirmation,name } = this.state;
+     const { email, password, passwordConfirmation,name, open } = this.state;
     
     return (
+      <Modal
+        onClose={() => this.setState({show: false})}
+      onOpen={() => this.setState({show: true})}
+      // open={open}
+      trigger={<Button>Show Modal</Button>}
+    >
       <Segment basic>
         <Header as='h1' textAlign='center'>Register</Header>
         <Form onSubmit={this.handleSubmit}>
@@ -74,7 +80,21 @@ import { AuthConsumer } from "../providers/AuthProvider"
             <Button primary type='submit'>Submit</Button>
           </Segment>
         </Form>
-      </Segment>
+        </Segment>
+
+        {/* <Modal.Actions>
+        <Button color='black' onClick={() => open(false)}>
+          Nope
+        </Button>
+        <Button
+          content="Yep, that's me"
+          labelPosition='right'
+          icon='checkmark'
+          onClick={() => open(false)}
+          positive
+        />
+      </Modal.Actions> */}
+      </Modal>
     )
   }
 }
