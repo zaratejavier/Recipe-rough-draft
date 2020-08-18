@@ -26,7 +26,7 @@ const Recipe = (props) => {
       <Button
         onClick={() => setEditing(!editing)}>edit
       </Button>
-        {editing ? <RecipeForm/> : null}
+      {editing ? <RecipeForm editRecipe={props.editRecipe} {...props}/> : null}
       
       
       

@@ -3,22 +3,30 @@ import { Form, FormInput, Modal, Button } from "semantic-ui-react"
 import Axios from "axios";
 
 const RecipeForm = (props) => {
-  const [title, setTitle] = useState(props.title ? props.title :'')
-  const [ingridients, setIngridients] = useState(props.ingridients ? props.ingridients :'')
-  const [directions, setDirections] = useState(props.directions ? props.directions :'')
-  const [prepTime, setPrepTime] = useState(props.prepTime ? props.prepTime :'')
-  const [cookTime, setCookTime] = useState(props.cookTime ? props.cookTime :'')
+  const [title, setTitle] = useState(props.title ? props.title : '')
+  const [ingridients, setIngridients] = useState(props.ingridients ? props.ingridients : '')
+  const [directions, setDirections] = useState(props.directions ? props.directions : '')
+  const [prepTime, setPrepTime] = useState(props.prepTime ? props.prepTime : '')
+  const [cookTime, setCookTime] = useState(props.cookTime ? props.cookTime : '')
   const [open, setOpen] = useState(false)
 
   
   // const [image, setImage] = useState('')
 
+  const recipe = {title: title, ingridients: ingridients, directions: directions, prepTime: prepTime, cookTime: cookTime, }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    Axios.post('/api/recipes', { title, ingridients, directions, prepTime, cookTime, }) //we tell it what information is going to be added to the database
-      .then(res => {
-        props.addRecipe(res.data)
-    })
+    if (props.editRecipe) {
+      props.editRecipe(props.id, recipe)
+    }
+    else {
+      Axios.post('/api/recipes', { title, ingridients, directions, prepTime, cookTime, }) //we tell it what information is going to be added to the database
+        .then(res => {
+          props.addRecipe(res.data)
+      })
+    }
+      
   }
 
   return (

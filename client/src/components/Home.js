@@ -37,8 +37,8 @@ const Home = () => {
     setRecipes(recipes.filter(recipe => recipe.id !== id))
   }
 
-  const editRecipe = (id) => {
-    axios.put(`/api/recipes/${id}`)
+  const editRecipe = (id, recipe) => {
+    axios.put(`/api/recipes/${id}`, recipe)
       .then(res => {
         const updateRecipe = recipes.map(recipe => {
           if (recipe.id === id)
