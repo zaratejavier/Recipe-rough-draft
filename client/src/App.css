@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.search-bar{
+  width: 50%;
+  border: none;
+  padding: 10px;
+}
+
+.search-from{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button{
+  border: none;
+  padding: 10px 20px;
+  color: black;
+}
+
+.recipes{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+

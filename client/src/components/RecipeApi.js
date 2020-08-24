@@ -16,7 +16,7 @@ const heart = (
 )
 
   return (
-    <Card style={styles.containerList}>
+    <Card style={styles.listContainer}>
       <Image src={image} wrapped ui={false} />
       {heart}
       <p>{likes} likes</p>

@@ -7,7 +7,7 @@ const Recipe = (props) => {
   const [editing, setEditing] = useState(false)
 
   return (
-    <div>
+    <div className="todo-list">
       <h1> {props.title}</h1>
       <img className='character-image' src={props.image} />
       <p> Prep Time: {props.prep_time}</p>
