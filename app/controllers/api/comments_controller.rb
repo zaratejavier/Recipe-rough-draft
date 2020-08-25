@@ -1,5 +1,8 @@
 class Api::CommentsController < ApplicationController
+  before_action :set_recipe
+
   def index
+    render json: @recipe.comments
   end
 
   def show
@@ -16,4 +19,9 @@ class Api::CommentsController < ApplicationController
 
   def destroy
   end
+
+  private
+    def set_recipe
+      @recipe = Recipe.find(params[:recipe_id])
+    end
 end

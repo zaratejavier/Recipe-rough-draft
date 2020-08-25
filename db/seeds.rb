@@ -23,6 +23,11 @@
             set: "set2", bgset: "bg1")),
     )
   end
+
+  5.times do |x| 
+    Comment.create(
+      recipe_id: rand(1...10), user_id: rand(1..5), body:Faker::GreekPhilosophers.quote)
+  end
 end
 
 puts "seeded!!!!!!!!!!!!!!!!"
