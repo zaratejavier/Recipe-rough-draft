@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Comments from "./Comments"
 import Axios from "axios"
 
 const RecipeView = (props) => {
@@ -39,6 +40,8 @@ const RecipeView = (props) => {
       {/* <p>{recipe.ingridients}</p> */}
       <p>{recipe.directions}</p>
       <p>prep time{recipe.prep_time}</p>
+      <hr />
+      <Comments recipeId={props.match.params.id}/>
     </div>
   )
 }
