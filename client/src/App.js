@@ -13,8 +13,6 @@ import RecipeView from './components/RecipeView';
 import RecipesApi from './components/RecipesApi'
 
 
-
-
 function App() {
   return (
     <>

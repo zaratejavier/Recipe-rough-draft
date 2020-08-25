@@ -2,12 +2,14 @@ import React, { useState } from "react"
 import { Button } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 import RecipeForm from "./RecipeForm"
+import paper from "../images/paper.jpg"
 
 const Recipe = (props) => {
   const [editing, setEditing] = useState(false)
 
+    
   return (
-    <div className="todo-list">
+    <div className="todo-list" >
       <h1> {props.title}</h1>
       <img className='character-image' src={props.image} />
       <p> Prep Time: {props.prep_time}</p>
@@ -28,9 +30,6 @@ const Recipe = (props) => {
       </Button>
       {editing ? <RecipeForm toggleEdit={setEditing} editRecipe={props.editRecipe} {...props} /> : null}
       <hr/>
-      
-      
-      
     </div>
   )
 }
