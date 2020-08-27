@@ -39,7 +39,7 @@ const RecipeView = (props) => {
     
       {/* <p>{recipe.ingridients}</p> */}
       <p>{recipe.directions}</p>
-      <p>prep time{recipe.prep_time}</p>
+      {/* <p>prep time{recipe.prep_time}</p> */}
       <hr />
       <Comments recipeId={props.match.params.id}/>
     </div>

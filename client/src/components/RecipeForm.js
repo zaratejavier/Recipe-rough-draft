@@ -64,7 +64,7 @@ const RecipeForm = (props) => {
           placeholder="Directions"
           onChange={(e) => setDirections(e.target.value)}
         />
-        <FormInput
+        {/* <FormInput
           label="Prep Time:"
           name="prepTime"
           required
@@ -79,7 +79,7 @@ const RecipeForm = (props) => {
           value={cookTime}
           placeholder="Cook Time"
           onChange={(e) => setCookTime(e.target.value)}
-        />
+        /> */}
         {/* <FormInput
           label="Ingridients:"
           name="ingridients"

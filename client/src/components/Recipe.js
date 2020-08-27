@@ -12,7 +12,7 @@ const Recipe = (props) => {
     <div className="todo-list" >
       <h1> {props.title}</h1>
       <img className='character-image' src={props.image} />
-      <p> Prep Time: {props.prep_time}</p>
+      {/* <p> Prep Time: {props.prep_time}</p> */}
        <Button
           as={Link}
           to={{pathname: `/recipe/${props.id}`}}
