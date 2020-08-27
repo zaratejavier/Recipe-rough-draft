@@ -3,6 +3,7 @@ import Axios from 'axios'
 import { Container } from 'semantic-ui-react'
 import { AuthConsumer } from "../providers/AuthProvider"
 import Comment from './Comment'
+import CommentForm from './CommentForm'
 
 const Comments = (props) => {
   const [comments, setComments] = useState([])
@@ -16,16 +17,22 @@ const Comments = (props) => {
 
   const renderComments = () => {
     return comments.map(comment => (
-      // <Container key={comment.id}>
-      //   <p>{comment.body}</p>
-      // </Container>
       <Comment key={comment.id} comment={comment}/>
     ))
   }
+
+  const addComment = (comment) => {
+    debugger
+    setComments([comment, ...comments])
+  }
+
   return (
     <div>
       <h2>Recipe Comments</h2>
+      <br/>
       {/* {props.auth.user.name}'s */}
+      <CommentForm addComment={addComment} commentId={props.recipeId} />
+      <br/>
       {renderComments()}
 
     </div>
