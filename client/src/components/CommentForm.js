@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { Form, FormInput, Button } from 'semantic-ui-react'
 import Axios from 'axios'
+import { AuthConsumer } from "../providers/AuthProvider"
+
 
 const CommentForm = (props) => {
   const [body, setBody] = useState('')
 
+  const comment = {body: body, user_id: props.auth.user.id, user_name: props.auth.user.name}  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post(`/api/recipes/${props.commentId}/comments`)
+    Axios.post(`/api/recipes/${props.commentId}/comments`, comment)
       .then((res) => {
       props.addComment(res.data)
     })
@@ -24,11 +28,20 @@ const CommentForm = (props) => {
           onChange={(e) => setBody(e.target.value)}
           required
         />
+        <Button>Submit</Button>
       </Form>
-      <Button>Submit</Button>
       
     </div>
   )
 }
 
-export default CommentForm
+
+const ConnectedCommentForm = (props) => {
+  return (
+    <AuthConsumer>
+      {auth => (<CommentForm {...props} auth={auth}/>)}
+    </AuthConsumer>
+      )
+}
+
+export default ConnectedCommentForm
