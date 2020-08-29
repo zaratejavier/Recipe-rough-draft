@@ -14,12 +14,13 @@ class Api::CommentsController < ApplicationController
   def create
     comment = @recipe.comments.new(comment_params)
 
-    binding.pry
     if comment.save
       render json: comment
     else
       render json: {errors: comment.errors}, status: :unprocessble_entity
     end
+    binding.pry
+
   end
 
   def edit
