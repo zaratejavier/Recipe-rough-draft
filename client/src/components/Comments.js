@@ -26,8 +26,8 @@ const Comments = (props) => {
     setComments([comment, ...comments])
   }
 
-  const editComment = (id) => {
-    Axios.put(`/api/recipes/${props.recipeId}/comments/${id}`)
+  const editComment = (id, comment) => {
+    Axios.put(`/api/recipes/${props.recipeId}/comments/${id}`, comment)
       .then((res) => {
         const updateComment = comments.map(comment => {
           if (comment.id === id)

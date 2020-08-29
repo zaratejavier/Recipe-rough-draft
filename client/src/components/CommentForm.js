@@ -10,11 +10,15 @@ const CommentForm = (props) => {
   const comment = {body: body, user_id: props.auth.user.id, user_name: props.auth.user.name}  
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    Axios.post(`/api/recipes/${props.commentId}/comments`, comment)
-      .then((res) => {
-      props.addComment(res.data)
-    })
+    if (props.editComment) {
+      props.editComment(props.commentId, comment)
+    } else {
+      e.preventDefault();
+      Axios.post(`/api/recipes/${props.commentId}/comments`, comment)
+        .then((res) => {
+        props.addComment(res.data)
+      }) 
+    }
   }
 
   return (

@@ -8,7 +8,7 @@ const Comment = (props) => {
   return (
 
     <div style={{ width: "25rem" }}>
-      {editing ? <ConnectedCommentForm /> : 
+      {editing ? <ConnectedCommentForm editComment={props.editComment} comment={props.comment} commentId = {props.comment.id} /> : 
         <div>
           <p>{props.comment.created_at}</p>
           <p>{props.comment.body}</p>
