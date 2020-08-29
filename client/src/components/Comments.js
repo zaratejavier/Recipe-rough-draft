@@ -17,7 +17,7 @@ const Comments = (props) => {
 
   const renderComments = () => {
     return comments.map(comment => (
-      <Comment key={comment.id} comment={comment}/>
+      <Comment key={comment.id} comment={comment} editComment={editComment}/>
     ))
   }
 
@@ -26,12 +26,24 @@ const Comments = (props) => {
     setComments([comment, ...comments])
   }
 
+  const editComment = (id) => {
+    Axios.put(`/api/recipes/${props.recipeId}/comments/${id}`)
+      .then((res) => {
+        const updateComment = comments.map(comment => {
+          if (comment.id === id)
+            return res.data;
+          return comment
+        })
+        setComments(updateComment)
+    })
+  }
+
   return (
     <div>
       <h2>Recipe Comments</h2>
       <br/>
       {/* {props.auth.user.name}'s */}
-      <CommentForm addComment={addComment} commentId={props.recipeId} />
+      <CommentForm addComment={addComment} commentId={props.recipeId} editComment={editComment} />
       <br/>
       {renderComments()}
 
