@@ -25,9 +25,9 @@ const RecipeForm = (props) => {
       Axios.post('/api/recipes', { title, ingridients, directions, prepTime, cookTime, }) //we tell it what information is going to be added to the database
         .then(res => {
           props.addRecipe(res.data)
-      })
+        })
     }
-      
+    setOpen(false)    
   }
 
   return (
