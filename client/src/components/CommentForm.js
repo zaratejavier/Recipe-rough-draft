@@ -7,6 +7,7 @@ import { AuthConsumer } from "../providers/AuthProvider"
 const CommentForm = (props) => {
   const [body, setBody] = useState('')
 
+
   const comment = { body: body, user_id: props.auth.user.id, user_name: props.auth.user.name }  
   
   useEffect(() => {
@@ -18,6 +19,9 @@ const CommentForm = (props) => {
   const handleSubmit = (e) => {
     if (props.editComment) {
       props.editComment(props.commentId, comment)
+      props.toggleEdit()
+
+
     } else {
       e.preventDefault();
       Axios.post(`/api/recipes/${props.commentId}/comments`, comment)
