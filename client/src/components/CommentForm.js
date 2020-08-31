@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, FormInput, Button } from 'semantic-ui-react'
 import Axios from 'axios'
 import { AuthConsumer } from "../providers/AuthProvider"
@@ -7,7 +7,13 @@ import { AuthConsumer } from "../providers/AuthProvider"
 const CommentForm = (props) => {
   const [body, setBody] = useState('')
 
-  const comment = {body: body, user_id: props.auth.user.id, user_name: props.auth.user.name}  
+  const comment = { body: body, user_id: props.auth.user.id, user_name: props.auth.user.name }  
+  
+  useEffect(() => {
+    if (props.comment) {
+      setBody(props.comment.body)
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     if (props.editComment) {
