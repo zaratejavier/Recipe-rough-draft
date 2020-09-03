@@ -30,7 +30,7 @@ const Comments = (props) => {
     Axios.put(`/api/recipes/${props.recipeId}/comments/${id}`, comment)
       .then((res) => {
         const updateComment = comments.map(comment => {
-          // debugger
+          debugger
           if (comment.id === id)
             return res.data;
           return comment
@@ -44,7 +44,7 @@ const Comments = (props) => {
       <h2>Recipe Comments</h2>
       <br/>
       {/* {props.auth.user.name}'s */}
-      <CommentForm addComment={addComment} commentId={props.recipeId} editComment={editComment} />
+      <CommentForm addComment={addComment} recipeId={props.recipeId} />
       <br/>
       {renderComments()}
 

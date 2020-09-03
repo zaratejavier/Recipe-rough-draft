@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'semantic-ui-react'
-import ConnectedCommentForm from './CommentForm'
+import CommentForm from './CommentForm'
 
 const Comment = (props) => {
   const [editing, setEditing] = useState(false)
@@ -8,7 +8,7 @@ const Comment = (props) => {
   return (
 
     <div style={{ width: "25rem" }}>
-      {editing ? <ConnectedCommentForm editComment={props.editComment} comment={props.comment} commentId={props.comment.id} toggleEdit={setEditing}/> : 
+      {editing ? <CommentForm editComment={props.editComment} comment={props.comment} commentId = {props.comment.id} /> : 
         <div>
           <p>{props.comment.created_at}</p>
           <p>{props.comment.body}</p>

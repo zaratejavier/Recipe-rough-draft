@@ -3,31 +3,41 @@ import { Form, FormInput, Button } from 'semantic-ui-react'
 import Axios from 'axios'
 import { AuthConsumer } from "../providers/AuthProvider"
 
-
 const CommentForm = (props) => {
   const [body, setBody] = useState('')
 
-
   const comment = { body: body, user_id: props.auth.user.id, user_name: props.auth.user.name }  
   
+
   useEffect(() => {
     if (props.comment) {
-      setBody(props.comment.body)
-    }
-  }, [])
+      setBody(props.body)
+    } 
+  },[])
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   Axios.post(`/api/recipes/${props.recipeId}/comments`, comment)
+  //     .then((res) => {
+  //     props.addComment(res.data)
+  //   })
+  // }
 
   const handleSubmit = (e) => {
-    if (props.editComment) {
+  e.preventDefault()
+  if (props.editComment) {
       props.editComment(props.commentId, comment)
-      props.toggleEdit()
-
-
+      // props.changeEdit()
     } else {
-      e.preventDefault();
-      Axios.post(`/api/recipes/${props.commentId}/comments`, comment)
-        .then((res) => {
+      Axios.post(`/api/recipes/${props.recipeId}/comments`, comment)
+      .then((res) => {
         props.addComment(res.data)
-      }) 
+        console.log(comment)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+      setBody('')
     }
   }
 
