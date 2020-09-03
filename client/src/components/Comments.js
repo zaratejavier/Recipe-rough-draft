@@ -7,6 +7,7 @@ import CommentForm from './CommentForm'
 
 const Comments = (props) => {
   const [comments, setComments] = useState([])
+  
 
   useEffect(() => {
     Axios.get(`/api/recipes/${props.recipeId}/comments`)
@@ -30,7 +31,7 @@ const Comments = (props) => {
     Axios.put(`/api/recipes/${props.recipeId}/comments/${id}`, comment)
       .then((res) => {
         const updateComment = comments.map(comment => {
-          debugger
+          // debugger
           if (comment.id === id)
             return res.data;
           return comment
@@ -38,6 +39,13 @@ const Comments = (props) => {
         setComments(updateComment)
     })
   }
+
+  // const deleteComment = () => {
+  //   Axios.delete(`/api/recipes/${props.recipeId}/comments/:id`)
+  //     .then((res) => {
+  //       setComments(comments.filter(comment => comment.id !== id))
+  //   })
+  // }
 
   return (
     <div>

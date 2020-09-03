@@ -5,23 +5,19 @@ import { AuthConsumer } from "../providers/AuthProvider"
 
 const CommentForm = (props) => {
   const [body, setBody] = useState('')
+  // const [editing, setEditing] = useState(false)
+
+
 
   const comment = { body: body, user_id: props.auth.user.id, user_name: props.auth.user.name }  
   
 
   useEffect(() => {
-    if (props.comment) {
-      setBody(props.body)
+    if (props.commentId) {
+      setBody(props.comment.body)
+      debugger
     } 
   },[])
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   Axios.post(`/api/recipes/${props.recipeId}/comments`, comment)
-  //     .then((res) => {
-  //     props.addComment(res.data)
-  //   })
-  // }
 
   const handleSubmit = (e) => {
   e.preventDefault()
@@ -39,6 +35,7 @@ const CommentForm = (props) => {
       })
       setBody('')
     }
+    // setOpen(false)    
   }
 
   return (
