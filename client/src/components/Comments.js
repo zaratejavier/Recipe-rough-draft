@@ -18,7 +18,8 @@ const Comments = (props) => {
 
   const renderComments = () => {
     return comments.map(comment => (
-      <Comment key={comment.id} comment={comment} editComment={editComment}/>
+      <Comment key={comment.id} comment={comment} editComment={editComment} deleteComment={deleteComment} />
+      
     ))
   }
 
@@ -40,12 +41,13 @@ const Comments = (props) => {
     })
   }
 
-  // const deleteComment = () => {
-  //   Axios.delete(`/api/recipes/${props.recipeId}/comments/:id`)
-  //     .then((res) => {
-  //       setComments(comments.filter(comment => comment.id !== id))
-  //   })
-  // }
+  const deleteComment = (id) => {
+    Axios.delete(`/api/recipes/${props.recipeId}/comments/${id}`)
+      .then((res) => {
+        debugger
+        setComments(comments.filter(comment => comment.id !== id))
+    })
+  }
 
   return (
     <div>

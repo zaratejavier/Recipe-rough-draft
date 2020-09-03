@@ -15,6 +15,8 @@ const Comment = (props) => {
         </div>
       }
       <Button onClick={() => setEditing(!editing)}>{editing ? 'Cancel' : 'Edit'}</Button>
+      <Button onClick={() => props.deleteComment(props.comment.id)}>Delete</Button>
+
       <hr/>
     </div>
   )

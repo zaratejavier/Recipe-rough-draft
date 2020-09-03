@@ -45,6 +45,7 @@ end
   # end
 
   def destroy
+    render json: @recipe.comments.find(params[:id]).destroy
   end
 
   private
