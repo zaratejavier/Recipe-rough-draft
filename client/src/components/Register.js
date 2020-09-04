@@ -29,13 +29,7 @@ import { AuthConsumer } from "../providers/AuthProvider"
      const { email, password, passwordConfirmation,name, open } = this.state;
     
     return (
-      <Modal
-        onClose={() => this.setState({show: false})}
-      onOpen={() => this.setState({show: true})}
-      // open={open}
-      trigger={<Button>Show Modal</Button>}
-    >
-      <Segment basic>
+  <div>
         <Header as='h1' textAlign='center'>Register</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
@@ -76,25 +70,9 @@ import { AuthConsumer } from "../providers/AuthProvider"
             type='password'
             onChange={this.handleChange}
           />
-          <Segment textAlign='center' basic>
             <Button primary type='submit'>Submit</Button>
-          </Segment>
         </Form>
-        </Segment>
-
-        {/* <Modal.Actions>
-        <Button color='black' onClick={() => open(false)}>
-          Nope
-        </Button>
-        <Button
-          content="Yep, that's me"
-          labelPosition='right'
-          icon='checkmark'
-          onClick={() => open(false)}
-          positive
-        />
-      </Modal.Actions> */}
-      </Modal>
+    </div>      
     )
   }
 }

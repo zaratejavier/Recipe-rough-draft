@@ -8,7 +8,7 @@ const RecipeForm = (props) => {
   const [directions, setDirections] = useState(props.directions ? props.directions : '')
   const [prepTime, setPrepTime] = useState(props.prepTime ? props.prepTime : '')
   const [cookTime, setCookTime] = useState(props.cookTime ? props.cookTime : '')
-  const [open, setOpen] = useState(false)
+  const [editing, setEditing] = useState(false)
 
   
   // const [image, setImage] = useState('')
@@ -27,18 +27,18 @@ const RecipeForm = (props) => {
           props.addRecipe(res.data)
         })
     }
-    setOpen(false)    
+    setEditing(false)    
   }
 
   return (
     <>
-      <Modal
+      {/* <Modal
       style={{padding: "20px", margin: "30px", display: "flex", justifyContent: "SpaceAround"}}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={<Button>Add Recipe</Button>}
-    >
+    > */}
       <Form onSubmit={handleSubmit}>
         <FormInput
           label="Title:"
@@ -88,13 +88,15 @@ const RecipeForm = (props) => {
           placeholder="Ingridients"
           onChange={(e) => setingridients(e.target.value)}
         /> */}
-        <Modal.Actions>
-          <Button>Submit</Button>
-          <Button onClick={() => setOpen(false)}>Exit</Button>
+        {/* <Modal.Actions> */}
+        <Button>Submit</Button>
+      <Button onClick={() => setEditing(!editing)}>{editing ? 'Edit' : 'Cancel'}</Button>
+        
+          {/* <Button onClick={() => setOpen(false)}>Exit</Button> */}
             
-        </Modal.Actions>
+        {/* </Modal.Actions> */}
       </Form>
-    </Modal>
+    {/* </Modal> */}
     </>
   )
 };

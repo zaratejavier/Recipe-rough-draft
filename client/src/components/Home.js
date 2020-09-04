@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import RecipeForm from "./RecipeForm"
 import Recipe from "./Recipe"
+import { Button } from "semantic-ui-react"
 
 const Home = () => {
   const [recipes, setRecipes] = useState([])
+  const [showForm, setShowForm] = useState(false)
+
 
   useEffect(() => {
     getRecipes()
@@ -62,8 +65,16 @@ const Home = () => {
     <div>
       <h1>Welcome to InstaCook</h1>
       {/* we pass the function addRecipe to our RecipeForm */}
-      <RecipeForm addRecipe={addRecipe}/>
-      {renderRecipes()}
+      {/* <RecipeForm addRecipe={addRecipe} /> */}
+     {/* <Button onClick = {() => setShowForm(!showForm)}>Add Recipe</Button> */}
+      
+      <Button
+        onClick={() => setShowForm(!showForm)}>Add Recipe
+      </Button>
+      {showForm ? <RecipeForm addRecipe={addRecipe} /> : null}
+      
+    {renderRecipes()}
+
 
   </div>
   )
