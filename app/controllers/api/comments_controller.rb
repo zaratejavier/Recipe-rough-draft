@@ -9,12 +9,6 @@ class Api::CommentsController < ApplicationController
     render json: recipe.comments.all  
   end
 
-  # def show
-  # end
-
-  # def new
-  # end
-
   def create
     comment = @recipe.comments.new(comment_params)
     # binding.pry
@@ -37,17 +31,9 @@ class Api::CommentsController < ApplicationController
     end
 end
 
-  # def update
-  #   if @comment.update(comment_params)
-  #     render json: @comment
-  #   else
-  #     render json: {errors: comment.errors}, status: :unprocessble_entity
-  #   end
-  # end
-
-  def destroy
-    render json: @recipe.comments.find(params[:id]).destroy
-  end
+def destroy
+  render json: @recipe.comments.find(params[:id]).destroy
+end
 
   private
   def comment_params

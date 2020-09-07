@@ -3,6 +3,9 @@ import { Button } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 import RecipeForm from "./RecipeForm"
 import paper from "../images/paper.jpg"
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const Recipe = (props) => {
   const [editing, setEditing] = useState(false)
@@ -22,17 +25,18 @@ const Recipe = (props) => {
           as={Link}
           to={{pathname: `/recipe/${props.id}`}}
         >
-        View
+        <VisibilityIcon/>
         </Button>
       
         <Button
           onClick={() => props.deleteRecipe(props.id)}
         >
-        Delete
+        <DeleteIcon/>
         </Button>
     
       <Button
-        onClick={() => setEditing(!editing)}>edit
+        onClick={() => setEditing(!editing)}>
+        <EditIcon/>
       </Button>
       <hr/>
     </div>

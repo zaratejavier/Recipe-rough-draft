@@ -38,6 +38,24 @@ const CommentForm = (props) => {
     // setOpen(false)    
   }
 
+  // const handleSubmit = (e) => {
+  // // e.preventDefault()
+  // if (props.editComment) {
+  //     props.editComment(props.commentId, comment)
+  //     props.changeEdit()
+  //   } else {
+  //     axios.post(`/api/posts/${props.postId}/comments`, comment)
+  //     .then((res) => {
+  //       props.addComment(res.data)
+  //       console.log(comment)
+  //     })
+  //     .catch((e) => {
+  //       console.log(e)
+  //     })
+  //     setDes('')
+  //   }
+  // }
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
