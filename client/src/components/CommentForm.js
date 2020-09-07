@@ -59,7 +59,7 @@ const CommentForm = (props) => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <FormInput
+        <Form.TextArea
           label="Comment"
           placeholder="Enter Comment Here"
           value={body}

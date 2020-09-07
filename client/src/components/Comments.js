@@ -51,7 +51,7 @@ const Comments = (props) => {
 
   return (
     <div>
-      <h2>Recipe Comments</h2>
+      <h2>Comments</h2>
       <br/>
       {/* {props.auth.user.name}'s */}
       <CommentForm addComment={addComment} recipeId={props.recipeId} />
