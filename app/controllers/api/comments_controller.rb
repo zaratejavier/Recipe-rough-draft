@@ -3,10 +3,10 @@ class Api::CommentsController < ApplicationController
   # before_action :set_comment, only: [:update, :destroy, :create]
 
   def index
-    render json: @recipe.comments
-    # recipe = Recipe.find(params[:recipe_id])
+    # render json: @recipe.comments
+    recipe = Recipe.find(params[:recipe_id])
 
-    # render json: recipe.comments.all  
+    render json: recipe.comments.all  
   end
 
   # def show
@@ -17,6 +17,7 @@ class Api::CommentsController < ApplicationController
 
   def create
     comment = @recipe.comments.new(comment_params)
+    # binding.pry
 
     if comment.save
       render json: comment

@@ -44,7 +44,7 @@ const Comments = (props) => {
   const deleteComment = (id) => {
     Axios.delete(`/api/recipes/${props.recipeId}/comments/${id}`)
       .then((res) => {
-        debugger
+        // debugger
         setComments(comments.filter(comment => comment.id !== id))
     })
   }

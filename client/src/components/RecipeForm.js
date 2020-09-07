@@ -90,7 +90,7 @@ const RecipeForm = (props) => {
         /> */}
         {/* <Modal.Actions> */}
         <Button>Submit</Button>
-      <Button onClick={() => setEditing(!editing)}>{editing ? 'Edit' : 'Cancel'}</Button>
+        {/* <Button onClick={() => setEditing(!editing)}>{editing ? 'Edit' : 'Cancel'}</Button> */}
         
           {/* <Button onClick={() => setOpen(false)}>Exit</Button> */}
             

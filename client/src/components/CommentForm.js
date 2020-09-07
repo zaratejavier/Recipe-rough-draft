@@ -15,7 +15,7 @@ const CommentForm = (props) => {
   useEffect(() => {
     if (props.commentId) {
       setBody(props.comment.body)
-      debugger
+      // debugger
     } 
   },[])
 

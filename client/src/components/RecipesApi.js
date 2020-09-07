@@ -16,7 +16,7 @@ const RecipesApi = () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_key}`)
     const data = await response.json();
     console.log(data)
-    debugger
+    // debugger
     setRecipes(data.hits)
   }
 
