@@ -3,6 +3,8 @@ import axios from "axios"
 import RecipeForm from "./RecipeForm"
 import Recipe from "./Recipe"
 import { Button } from "semantic-ui-react"
+import AddIcon from '@material-ui/icons/Add';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([])
@@ -57,10 +59,6 @@ const Home = () => {
   // we put it at the begining of the array and then spread the rest of our books after that
   const addRecipe = (recipe) => setRecipes([recipe, ...recipes]) 
 
-  // editRecipe Function
-
-  // deleteRecipe function
- 
   return(
     <div>
       <h1>Welcome to InstaCook</h1>
@@ -68,9 +66,10 @@ const Home = () => {
       {/* <RecipeForm addRecipe={addRecipe} /> */}
      {/* <Button onClick = {() => setShowForm(!showForm)}>Add Recipe</Button> */}
       
-      <Button
-        onClick={() => setShowForm(!showForm)}>Add Recipe
-      </Button>
+      {/* <Button onClick={() => setShowForm(!showForm)}>Add Recipe</Button> */}
+      <Button onClick={() => setShowForm(!showForm)}>{showForm ? <ClearIcon/> : <AddIcon/>}</Button>
+      
+
       {showForm ? <RecipeForm addRecipe={addRecipe} /> : null}
       
     {renderRecipes()}
