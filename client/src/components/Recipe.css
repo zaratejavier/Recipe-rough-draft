@@ -1,0 +1,10 @@
+.recipe_container{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  flex: 1;
+}
+
+.recipe_buttons{
+  /* flex: 1; */
+}

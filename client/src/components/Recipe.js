@@ -6,13 +6,14 @@ import paper from "../images/paper.jpg"
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import './Recipe.css'
 
 const Recipe = (props) => {
   const [editing, setEditing] = useState(false)
 
     
   return (
-    <div className="todo-list" >
+    <div className="recipe_container" >
       {editing ? <RecipeForm toggleEdit={setEditing} editRecipe={props.editRecipe} {...props} /> :
         
         <div>
@@ -20,25 +21,26 @@ const Recipe = (props) => {
           <img className='character-image' src={props.image} /> 
         </div>
       }
-      <br/>
-       <Button
-          as={Link}
-          to={{pathname: `/recipe/${props.id}`}}
-        >
-        <VisibilityIcon/>
-        </Button>
+      <div className="recipe_buttons">
+        <br/>
+        <Button
+            as={Link}
+            to={{pathname: `/recipe/${props.id}`}}
+          >
+          <VisibilityIcon/>
+          </Button>
+        
+          <Button
+            onClick={() => props.deleteRecipe(props.id)}
+          >
+          <DeleteIcon/>
+          </Button>
       
         <Button
-          onClick={() => props.deleteRecipe(props.id)}
-        >
-        <DeleteIcon/>
+          onClick={() => setEditing(!editing)}>
+          <EditIcon/>
         </Button>
-    
-      <Button
-        onClick={() => setEditing(!editing)}>
-        <EditIcon/>
-      </Button>
-      <hr/>
+      </div>
     </div>
   )
 }
