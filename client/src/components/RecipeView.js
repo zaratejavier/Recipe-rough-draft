@@ -15,11 +15,12 @@ const RecipeView = (props) => {
         console.log(res.data)
         // console.log(res.data.ingridients.split(','))
         // setIngrediantSplit(res.data.ingridients.split('\n').map(e => e.split(',')))
-        setIngrediantSplit(res.data.ingridients.split(','))
+        // setIngrediantSplit(res.data.ingridients.split(',')) this one is working
+        // replace(/\n/g, ",").split(",")
+        setIngrediantSplit(res.data.ingridients.replace(/\n/g, ",").split(","))
 
     })
   }, [])
-
 
   const renderIngredients = () => {
     return ingrediantSplit.map(ingredient => (
@@ -31,9 +32,11 @@ const RecipeView = (props) => {
   
   return (
     <div>
-      <h1>{recipe.title}</h1>      
+      <h1>{recipe.title}</h1>
+      <h3>ingridients</h3>
       {renderIngredients()}
       <br />
+      <h3>Directions</h3>
       <p>{recipe.directions}</p>
       {/* <p>prep time{recipe.prep_time}</p> */}
       <hr />
