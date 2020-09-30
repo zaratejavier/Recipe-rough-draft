@@ -1,0 +1,9 @@
+.home__title{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.home__button{
+ background-color: black; 
+}

@@ -5,6 +5,7 @@ import Recipe from "./Recipe"
 import { Button } from "semantic-ui-react"
 import AddIcon from '@material-ui/icons/Add';
 import ClearIcon from '@material-ui/icons/Clear';
+import "./Home.css"
 
 const Home = () => {
   const [recipes, setRecipes] = useState([])
@@ -61,20 +62,16 @@ const Home = () => {
 
   return(
     <div>
-      <h1>Welcome to InstaCook</h1>
+      <h1 className="home__title">Welcome to InstaCook</h1>
       {/* we pass the function addRecipe to our RecipeForm */}
       {/* <RecipeForm addRecipe={addRecipe} /> */}
-     {/* <Button onClick = {() => setShowForm(!showForm)}>Add Recipe</Button> */}
+      {/* <Button onClick = {() => setShowForm(!showForm)}>Add Recipe</Button> */}
       
       {/* <Button onClick={() => setShowForm(!showForm)}>Add Recipe</Button> */}
-      <Button onClick={() => setShowForm(!showForm)}>{showForm ? <ClearIcon/> : <AddIcon/>}</Button>
-      
-
+      <Button className="home__button" onClick={() => setShowForm(!showForm)}>{showForm ? <ClearIcon/> : <AddIcon/>}</Button>
       {showForm ? <RecipeForm addRecipe={addRecipe} /> : null}
       
-    {renderRecipes()}
-
-
+      {renderRecipes()}
   </div>
   )
 }
